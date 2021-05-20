@@ -64,3 +64,45 @@ export const createEmitter = () => {
 
   return { emit, on, off, eventTypes, listeners };
 };
+
+/**
+ * Create a Single Event Emitter
+ *
+ * @template T
+ * @returns
+ */
+export const createSingleEventEmitter = () => {
+  const subscriptions = new Set();
+
+  /**
+   * Subscribe to this event, Returns a function to unsubscribe
+   *
+   * @param {(data: T) => void} subscription
+   * @returns
+   */
+  const sub = subscription => {
+    subscriptions.add(subscription);
+
+    return () => unsub(subscription);
+  };
+
+  /**
+   * Unsubscribe from this event
+   *
+   * @param {(data: T) => void} subscription
+   */
+  const unsub = subscription => {
+    subscriptions.delete(subscription);
+  };
+
+  /**
+   * Emit Event
+   *
+   * @param {T} data
+   */
+  const emit = data => {
+    subscriptions.forEach(subscription => subscription(data));
+  };
+
+  return { sub, unsub, emit };
+};

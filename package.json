@@ -4,6 +4,7 @@
   "description": "Event Emitter",
   "type": "module",
   "main": "src/index.js",
+  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/firewave-remo/emitter"
@@ -12,7 +13,7 @@
     "src"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm version patch"
   },
   "keywords": [
     "EventEmitter",

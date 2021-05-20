@@ -1,4 +1,4 @@
-import { createEmitter } from '../src/emitter.js';
+import { createEmitter, createSingleEventEmitter } from '../src/emitter.js';
 
 const emitter = createEmitter();
 
@@ -16,3 +16,18 @@ emitter.off('test', () => {});
 
 console.log(emitter.eventTypes());
 console.log(emitter.listeners('test'));
+
+const event =
+  /** @type {createSingleEventEmitter<{hello: string}>} */ createSingleEventEmitter();
+
+const test = {};
+
+const unsub = event.sub(data =>
+  console.log('Got some data from single Event', data),
+);
+
+event.emit({ hello: '' });
+
+unsub();
+
+event.emit({ hello: 'world' });
