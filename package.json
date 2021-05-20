@@ -1,0 +1,20 @@
+{
+  "name": "firewave-emitter",
+  "version": "0.1.1",
+  "description": "Event Emitter",
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "EventEmitter",
+    "Event Emitter",
+    "Event Bus"
+  ],
+  "author": "Remo Fischer",
+  "license": "MIT"
+}
