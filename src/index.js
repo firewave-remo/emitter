@@ -1,3 +1,3 @@
-import { createEmitter } from './emitter.js';
+import { createEmitter, createSingleEventEmitter } from './emitter.js';
 
-export { createEmitter };
+export { createEmitter, createSingleEventEmitter };
